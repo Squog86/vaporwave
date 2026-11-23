@@ -1,7 +1,7 @@
 /* =========================================================
-   Vaporwave Theme Palette:
-   - Primary Accent: Neon Cyan (#00f0ff)
-   - Complementary Accent: Neon Magenta (#ff007f)
+   Vaporwave Theme Palette (WCAG AA Verified >= 4.5:1):
+   - Primary Accent: Neon Cyan (#00f0ff) - 13.5:1 contrast
+   - Complementary Accent: Bright Magenta (#ff66b2) - 6.8:1 contrast
    - Background Base: Midnight Purple (#0d0221 / #19053b)
    ========================================================= */
 
@@ -14,10 +14,6 @@ body {
   padding: 24px;
 }
 
-/* ---------------------------------------------------------
-   1. TYPE SELECTOR: header
-   Box Model applied: margin, padding, border
-   --------------------------------------------------------- */
 header {
   background-color: #19053b;
   border: 3px solid #00f0ff;
@@ -27,22 +23,14 @@ header {
   text-align: center;
 }
 
-/* ---------------------------------------------------------
-   2. ID SELECTOR: #origins
-   Box Model applied: margin, padding, border
-   --------------------------------------------------------- */
-#origins {
+#origins, .content-box {
   background-color: #1a083d;
-  border: 2px solid #ff007f;
+  border: 2px solid #ff66b2;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 24px;
 }
 
-/* ---------------------------------------------------------
-   3. CLASS SELECTOR: .feature-card
-   Box Model applied: margin, padding, border
-   --------------------------------------------------------- */
 .feature-card {
   background-color: #240046;
   border: 2px solid #7928ca;
@@ -65,16 +53,19 @@ nav a {
   color: #00f0ff;
   text-decoration: none;
   font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
 }
 
-nav a:hover {
-  color: #ff007f;
-  text-decoration: underline;
+nav a:hover, nav a[aria-current="page"] {
+  color: #0d0221;
+  background-color: #00f0ff;
+  text-decoration: none;
 }
 
-/* Headings & Text Colors */
+/* Headings & Text Colors (WCAG AA Compliant) */
 h1, h2, h3 {
-  color: #ff007f;
+  color: #ff66b2;
   margin-top: 0;
 }
 
@@ -92,12 +83,80 @@ img {
 }
 
 figcaption {
-  font-size: 0.85rem;
-  color: #94a3b8;
+  font-size: 0.9rem;
+  color: #cbd5e1;
   margin-top: 8px;
 }
 
-/* Remaining Sections & Footer */
+/* Accessible Contact Form Styling */
+fieldset {
+  border: 2px solid #00f0ff;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #19053b;
+}
+
+legend {
+  color: #00f0ff;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #e0e6ed;
+}
+
+input, select, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 2px solid #7928ca;
+  border-radius: 6px;
+  background-color: #0d0221;
+  color: #e0e6ed;
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 3px solid #00f0ff;
+  border-color: #00f0ff;
+}
+
+input[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-color: #ff8080;
+}
+
+.error-message {
+  display: block;
+  color: #ff8080;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+button[type="submit"] {
+  background-color: #00f0ff;
+  color: #0d0221;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff66b2;
+  color: #0d0221;
+}
+
 #pillars, #listen {
   margin-bottom: 24px;
 }
@@ -105,7 +164,7 @@ figcaption {
 footer {
   text-align: center;
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: #cbd5e1;
   border-top: 1px solid #334e68;
   padding-top: 16px;
   margin-top: 32px;
