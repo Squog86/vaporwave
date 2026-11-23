@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About &amp; Contact | Vaporwave Archive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>About the Vaporwave Archive</h1>
+    <p>Curating the history, visual art, and underground producers of the movement.</p>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home &amp; Origins</a></li>
+        <li><a href="subgenres.html">Subgenres &amp; Artists</a></li>
+        <li><a href="about.html" aria-current="page">About &amp; Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>About This Project</h2>
+      <p>
+        Created by Rachel Robledo for Web Development coursework, this archive documents the origins, visual motifs, and sonic evolution of vaporwave music from early Bandcamp releases to modern subgenres.
+      </p>
+    </section>
+
+    <section>
+      <h2>Recommend an Album or Get in Touch</h2>
+      <form id="contact-form" novalidate>
+        <fieldset>
+          <legend>Send a Message or Album Recommendation</legend>
+
+          <div class="form-group">
+            <label for="sender-name">Your Name (Required):</label>
+            <input type="text" id="sender-name" name="name" required aria-required="true" aria-describedby="name-error">
+            <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="sender-email">Email Address (Required):</label>
+            <input type="email" id="sender-email" name="email" required aria-required="true" aria-describedby="email-error">
+            <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="favorite-subgenre">Favorite Vaporwave Subgenre:</label>
+            <select id="favorite-subgenre" name="subgenre">
+              <option value="classic">Classic Vaporwave</option>
+              <option value="mallsoft">Mallsoft</option>
+              <option value="future-funk">Future Funk</option>
+              <option value="barber-beats">Dreamcore / Slushwave</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sender-message">Message or Release Link (Required):</label>
+            <textarea id="sender-message" name="message" rows="4" required aria-required="true" aria-describedby="message-error"></textarea>
+            <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
+          </div>
+
+          <button type="submit">Submit Message</button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Vaporwave Archive Project. Built for Web Development Coursework.</p>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      let isValid = true;
+      const fields = [
+        { id: 'sender-name', errorId: 'name-error', msg: 'Please enter your name.' },
+        { id: 'sender-email', errorId: 'email-error', msg: 'Please enter a valid email address.' },
+        { id: 'sender-message', errorId: 'message-error', msg: 'Please enter a message.' }
+      ];
+
+      fields.forEach(field => {
+        const input = document.getElementById(field.id);
+        const errorSpan = document.getElementById(field.errorId);
+        if (!input.value.trim() || (input.type === 'email' && !input.value.includes('@'))) {
+          input.setAttribute('aria-invalid', 'true');
+          errorSpan.textContent = field.msg;
+          isValid = false;
+        } else {
+          input.removeAttribute('aria-invalid');
+          errorSpan.textContent = '';
+        }
+      });
+
+      if (!isValid) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>
